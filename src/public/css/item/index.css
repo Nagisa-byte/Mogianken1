@@ -1,0 +1,49 @@
+/* タブ全体 */
+.tab-menu {
+    display: flex;
+    gap: 40px;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+/* タブ共通 */
+.tab-menu a {
+    text-decoration: none;
+    color: #555;
+    padding-bottom: 6px;
+}
+
+/* 選択中タブ */
+.tab-active {
+    color: red !important;
+    font-weight: bold;
+}
+
+/* 下線（タブの下に水平線） */
+.tab-border {
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    margin-bottom: 20px;
+}
+
+/* 商品一覧カード */
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item-card {
+    width: 180px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+
+.item-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}

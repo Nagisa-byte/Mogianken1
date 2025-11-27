@@ -1,0 +1,77 @@
+/* ヘッダー全体 */
+header {
+    background: #000;
+    padding: 10px 20px;
+}
+
+/* ナビゲーション */
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* 左ブロック（ロゴ） */
+.nav-left img {
+    height: 40px;
+}
+
+/* 中央ブロック（検索窓） */
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-center input {
+    width: 70%;
+    max-width: 500px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+}
+
+/* 右ブロック（リンク） */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-right a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* 出品ボタン */
+.sell-btn {
+    background: #fff;
+    color: #000 !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.sell-btn:hover {
+    opacity: 0.8;
+}
+
+/* ログアウトボタン */
+.logout-btn {
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.logout-btn:hover {
+    opacity: 0.7;
+}
+
+main {
+    padding: 20px;
+}
