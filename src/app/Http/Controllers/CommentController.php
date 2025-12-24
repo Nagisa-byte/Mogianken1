@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
+use App\Models\Item;
 
 class CommentController extends Controller
 {
     /**
      * コメント投稿
      */
-    public function store($item_id)
+    public function store(CommentRequest $request, Item $item)
     {
-        // コメント投稿処理
-        return back();
+        $item->comments()->create([
+            'user_id' => auth()->id(),
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('item.show', $item->id);
     }
 }

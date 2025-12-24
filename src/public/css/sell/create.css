@@ -1,0 +1,185 @@
+/* 全体 */
+.sell-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* 見出し */
+.page-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+/* -----------------------------
+   商品画像アップロード
+------------------------------ */
+.image-box-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-box {
+    width: 100%;
+    max-width: 700px;
+    /* フォームと同じ幅 */
+    height: 300px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.image-btn {
+    padding: 10px 20px;
+    color: red;
+    border: 2px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.image-btn:hover {
+    opacity: 0.8;
+}
+
+/* 入力タイトル */
+.input-title {
+    text-align: left;
+    font-size: 16px;
+    margin: 15px 0 5px;
+}
+
+/* -----------------------------
+   カテゴリーピル
+------------------------------ */
+.category-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-pill {
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color:red;
+}
+
+.category-pill input {
+    display: none;
+}
+
+/* 選択時に楕円全体が赤に */
+.category-pill input:checked+span {
+    background: red;
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+/* -----------------------------
+   テキスト・セレクトフォーム共通
+------------------------------ */
+.text-input,
+.select-box,
+.textarea-input,
+.price-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* セレクトもフォームと同サイズに */
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-box {
+    appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    font-size: 12px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* -----------------------------
+   価格入力（¥ をフォームの中に）
+------------------------------ */
+/* 販売価格 タイトル */
+.price-wrapper {
+    text-align: left;
+    font-size: 16px;
+    margin: 15px 0 5px;
+}
+
+/* ¥マーク */
+.yen {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 13px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* 価格入力フォーム */
+.price-input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 30px;
+    /* ← ¥ の分の余白 */
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+
+    -moz-appearance: textfield;
+}
+
+.price-input::-webkit-inner-spin-button,
+.price-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 出品ボタン */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: red;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    opacity: 0.8;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+}

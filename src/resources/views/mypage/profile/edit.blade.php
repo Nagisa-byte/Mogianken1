@@ -1,13 +1,24 @@
 @extends('layouts.app')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/mypage/edit.css') }}">
+@endsection
+
 @section('content')
 <h1>プロフィール編集</h1>
 
-<form action="/mypage/profile/edit" method="POST" enctype="multipart/form-data">
+<form action="/mypage/profile/edit" method="POST" enctype="multipart/form-data" class="profile-edit-form">
     @csrf
 
     <label>プロフィール画像</label>
-    <input type="file" name="profile_image">
+    <div class="profile-image-row">
+        <img src="{{ $profile->profile_image ?? '/noimage.png' }}" class="profile-preview">
+        <input type="file" name="profile_image" id="profile_image" class="hidden-file">
+        {{-- カスタムボタン --}}
+        <label for="profile_image" class="custom-file-btn">
+            画像を選択する
+        </label>
+    </div>
     @error('profile_image') <div>{{ $message }}</div> @enderror
 
     <label>ユーザー名</label>

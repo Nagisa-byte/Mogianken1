@@ -3,30 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Item;
+use App\Models\Purchase;
 
 class MypageController extends Controller
 {
-    /**
-     * マイページ（出品した商品一覧）
-     */
-    public function index()
+    public function index(Request $request)
     {
-        return view('mypage.index');
+        return $this->soldList($request);
     }
 
-    /**
-     * 購入した商品一覧
-     */
-    public function purchasedList()
+    /* 出品した商品 */
+    public function soldList(Request $request)
     {
-        return view('mypage.index');
+        $user = Auth::user();
+
+        $items = Item::where('user_id', $user->id)->get();
+
+        return view('mypage.index', [
+            'user' => $user,
+            'items' => $items
+        ]);
     }
 
-    /**
-     * 出品した商品一覧
-     */
-    public function soldList()
+    /* 購入した商品 */
+    public function purchasedList(Request $request)
     {
-        return view('mypage.index');
+        $user = Auth::user();
+
+        // purchases → item を参照
+        $items = Item::whereIn(
+            'id',
+            Purchase::where('user_id', $user->id)->pluck('item_id')
+        )->get();
+
+        return view('mypage.index', [
+            'user' => $user,
+            'items' => $items
+        ]);
     }
 }

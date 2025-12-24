@@ -33,20 +33,29 @@
             </div>
             {{-- 右：メニュー --}}
             <div class="nav-right">
-                @guest
-                <a href="/login">ログイン</a>
-                <a href="/register">会員登録</a>
-                @endguest
-
+                {{-- ログイン中の表示 --}}
                 @auth
-                <a href="/mypage">マイページ</a>
-
-                <form action="/logout" method="POST">
+                {{-- ログアウト --}}
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="logout-btn">ログアウト</button>
                 </form>
+
+                <a href="{{ route('mypage') }}">マイページ</a>
+                <a href="{{ route('sell.create') }}" class="sell-btn">出品</a>
+
                 @endauth
-                <a href="/sell" class="sell-btn">出品</a>
+
+
+                {{-- 未ログイン時の表示 --}}
+                @guest
+                {{-- ログインボタン --}}
+                <a href="{{ route('login') }}">ログイン</a>
+
+                {{-- マイページ / 出品 → アカウント登録ページへ誘導 --}}
+                <a href="{{ route('login') }}">マイページ</a>
+                <a href="{{ route('login') }}" class="sell-btn">出品</a>
+                @endguest
 
             </div>
         </div>

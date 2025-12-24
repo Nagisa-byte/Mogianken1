@@ -1,0 +1,173 @@
+/* 全体レイアウト */
+.item-detail-container {
+    display: flex;
+    gap: 40px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+/* 左：商品画像 */
+.item-image-area {
+    flex: 1;
+    text-align: center;
+}
+
+.item-main-image {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* 右：商品情報 */
+.item-info-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 商品名 */
+.item-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* ブランド名 */
+.item-brand {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 販売価格 */
+.item-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e60000;
+}
+
+.item-price .tax {
+    font-size: 14px;
+    color: #555;
+}
+
+/* お気に入り & コメント */
+.action-buttons {
+    display: flex;
+    gap: 40px;
+    margin: 10px 0;
+}
+
+.action-item {
+    text-align: center;
+}
+
+.icon-btn {
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.count {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/*購入ボタン*/
+/* 購入ボタン */
+.purchase-btn {
+    display: block;
+    text-align: center;
+    background: red;
+    color: white;
+    padding: 12px 0;
+    border-radius: 6px;
+    font-size: 16px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.purchase-btn:hover {
+    opacity: 0.9;
+}
+
+/* セクションタイトル */
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* 商品説明 */
+.description-box p {
+    margin: 4px 0;
+    line-height: 1.6;
+}
+
+.item-description {
+    margin-top: 5px;
+}
+
+/* 商品の情報 */
+.info-box p {
+    margin: 4px 0;
+}
+
+/* コメント一覧 */
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comment-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.comment-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-user {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.comment-text {
+    line-height: 1.6;
+}
+
+.no-comment {
+    color: #777;
+}
+
+/* コメントフォーム */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-textarea {
+    padding: 10px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.comment-submit-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}

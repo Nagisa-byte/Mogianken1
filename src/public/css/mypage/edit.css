@@ -1,0 +1,101 @@
+/* ページタイトル */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* フォーム全体 */
+.profile-edit-form{
+    width: 60%;
+    max-width: 600px;
+    margin: 0 auto;
+    /* 中央寄せ */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ラベル（タイトル） */
+.profile-edit-form label {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    /* 左揃え */
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* 入力フォーム共通 */
+.profile-edit-form input[type="text"],
+.profile-edit-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* エラー表示 */
+.profile-edit-form div {
+    color: red;
+    font-size: 14px;
+}
+
+/* 画像選択を隠してカスタムボタンにする */
+.hidden-file {
+    display: none;
+    /* 標準の file ボタンを隠す */
+}
+
+/* カスタムボタン */
+.custom-file-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #ff5555;
+    color: red;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.custom-file-btn:hover {
+    opacity: 0.9;
+}
+
+/* プロフィール画像エリアの横並び */
+.profile-image-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 丸型プロフィールアイコン */
+.profile-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ddd;
+    object-fit: cover;
+}
+
+/* 更新ボタン */
+.profile-edit-form button {
+    width: 100%;
+    /* ← 入力フォームと同じ幅にする */
+    padding: 12px 0;
+    /* ← 左右の余白は不要 */
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.profile-edit-form button:hover {
+    opacity: 0.9;
+}

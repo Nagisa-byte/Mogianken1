@@ -5,39 +5,48 @@
 @endsection
 
 @section('content')
-<h1></h1>
 
 {{-- タブメニュー --}}
 <div class="tab-menu">
 
-    <a href="/" class="{{ request('tab') !== 'mylist' ? 'tab-active' : '' }}">
+    {{-- おすすめタブ（tab=mylist 以外はおすすめ） --}}
+    <a href="/"
+        class="{{ request('tab') !== 'mylist' ? 'tab-active' : '' }}">
         おすすめ
     </a>
 
-    <a href="/?tab=mylist" class="{{ request('tab') === 'mylist' ? 'tab-active' : '' }}">
+    {{-- マイリストタブ --}}
+    <a href="/?tab=mylist"
+        class="{{ request('tab') === 'mylist' ? 'tab-active' : '' }}">
         マイリスト
     </a>
 </div>
 
-{{-- 下の水平線 --}}
 <div class="tab-border"></div>
+
 
 {{-- 商品一覧 --}}
 <div class="item-list">
 
-    @forelse ($items ?? [] as $item)
+    @forelse ($items as $item)
     <div class="item-card">
         <a href="/item/{{ $item->id }}">
             <img src="{{ $item->image_path ?? '/noimage.png' }}" alt="商品画像">
-            <p>{{ $item->title }}</p>
-            <p>¥{{ number_format($item->price) }}</p>
+            <p class="item-title">{{ $item->title }}</p>
+            <p class="item-price">¥{{ number_format($item->price) }}</p>
         </a>
     </div>
+
     @empty
-    <p>商品がありません。</p>
-    @endforelse
+    {{-- 商品が無いときは 6 枠ダミー表示 --}}
+    @for ($i = 0; $i < 6; $i++)
+        <div class="item-card dummy-card">
+        <div class="dummy-img">商品画像</div>
+        <p class="dummy-title">商品名</p>
+</div>
+@endfor
+@endforelse
 
 </div>
-
 
 @endsection

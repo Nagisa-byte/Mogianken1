@@ -19,28 +19,38 @@ class ItemController extends Controller
         return view('item.index', compact('items'));
     }
 
+
     /**
      * ログインユーザーのお気に入り商品一覧
      */
     public function mylist()
     {
-        // 未ログイン → 空配列を渡す
+        // ★ ログアウト状態なら空配列を返す
         if (!auth()->check()) {
-            return view('item.index', ['items' => []]);
+            return view('item.index', [
+                'items' => collect(), // 空コレクション
+            ]);
         }
 
-        // ログイン時 → お気に入り商品を取得
-        $items = Item::whereHas('favorites', function ($q) {
-            $q->where('user_id', auth()->id());
-        })->get();
+        // ★ ログイン時：お気に入り商品を取得
+        $items = auth()->user()
+            ->favorites()
+            ->with('item')
+            ->get()
+            ->pluck('item'); // item モデルのみ抽出
 
         return view('item.index', compact('items'));
     }
+
+
     /**
      * 商品詳細
      */
     public function show($item_id)
     {
-        return view('item.show');
+        // IDで商品を取得
+        $item = Item::with(['categories', 'comments.user.profile'])->findOrFail($item_id);
+
+        return view('item.show', compact('item'));
     }
 }

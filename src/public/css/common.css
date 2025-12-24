@@ -1,27 +1,36 @@
-/* ヘッダー全体 */
+/* ====== ヘッダー全体 ====== */
 header {
     background: #000;
     padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* ナビゲーション */
+/* ====== ナビゲーション全体 ====== */
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+
+    /* 親レイアウト修正による高さ崩れ防止 */
+    width: 100%;
+    flex-wrap: nowrap;
 }
 
-/* 左ブロック（ロゴ） */
+/* ====== 左ブロック（ロゴ） ====== */
 .nav-left img {
     height: 40px;
+    display: block;
 }
 
-/* 中央ブロック（検索窓） */
+/* ====== 中央ブロック（検索） ====== */
 .nav-center {
     flex: 1;
     display: flex;
     justify-content: center;
+    min-width: 200px;
+    /* 幅が潰れるのを防止 */
 }
 
 .nav-center input {
@@ -31,47 +40,124 @@ header {
     border-radius: 4px;
     border: none;
     font-size: 14px;
+
+    /* Safari やレイアウト変更時の伸び縮み対策 */
+    box-sizing: border-box;
 }
 
-/* 右ブロック（リンク） */
+/* ====== 右ブロック（リンク） ====== */
 .nav-right {
     display: flex;
     align-items: center;
     gap: 15px;
+    white-space: nowrap;
+    /* 改行で崩れないようにする */
 }
 
 .nav-right a {
     color: #fff;
     text-decoration: none;
     font-size: 15px;
+    display: inline-block;
+    /* 高さ崩れ対策 */
+    padding: 6px 4px;
+    /* クリック範囲を広げる */
 }
 
-/* 出品ボタン */
+.nav-right form {
+    margin: 0;
+}
+
+/* ====== 出品ボタン（sell-btn） ====== */
 .sell-btn {
     background: #fff;
     color: #000 !important;
     padding: 8px 16px;
     border-radius: 4px;
     font-weight: bold;
+    display: inline-block;
 }
 
 .sell-btn:hover {
     opacity: 0.8;
 }
 
-/* ログアウトボタン */
+/* ====== ログアウトボタン ====== */
 .logout-btn {
     background: transparent;
     color: #fff;
     border: none;
     cursor: pointer;
     font-size: 15px;
+    padding: 6px 4px;
 }
 
 .logout-btn:hover {
     opacity: 0.7;
 }
 
+/* ====== main コンテンツ ====== */
 main {
     padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ============================= */
+/* ===== タブレット以下 ===== */
+/* ============================= */
+@media screen and (max-width: 768px) {
+    .nav-center input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .nav-right a,
+    .logout-btn {
+        font-size: 14px;
+    }
+}
+
+/* ============================= */
+/* ===== スマホ対応 ===== */
+/* ============================= */
+@media screen and (max-width: 480px) {
+
+    /* ヘッダーを縦並び */
+    .nav-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    /* ロゴ中央 */
+    .nav-left {
+        text-align: center;
+    }
+
+    .nav-left img {
+        height: 36px;
+        margin: 0 auto;
+    }
+    /* 検索窓100% */
+    .nav-center {
+        width: 100%;
+    }
+
+    .nav-center input {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    /* メニューは横並び＋折返し */
+    .nav-right {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .sell-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
 }

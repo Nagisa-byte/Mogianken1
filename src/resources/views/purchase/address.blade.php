@@ -1,23 +1,35 @@
 @extends('layouts.app')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/purchase/address.css') }}">
+@endsection
+
 @section('content')
-<h1>住所変更</h1>
 
-<form action="/purchase/address/{{ $item->id }}" method="POST">
-    @csrf
+<div class="purchase-address-container">
 
-    <label>郵便番号</label>
-    <input type="text" name="postal_code" value="{{ old('postal_code', $address->postal_code ?? '') }}">
-    @error('postal_code') <div>{{ $message }}</div> @enderror
+    <h2>住所の変更</h2>
 
-    <label>住所</label>
-    <input type="text" name="address" value="{{ old('address', $address->address ?? '') }}">
-    @error('address') <div>{{ $message }}</div> @enderror
+    <form action="{{ url('/purchase/address/' . $item->id) }}" method="POST">
+        @csrf
 
-    <label>建物名</label>
-    <input type="text" name="building" value="{{ old('building', $address->building ?? '') }}">
+        <label>郵便番号</label>
+        <input type="text" name="postal_code"
+            value="{{ old('postal_code', $user->profile->postal_code ?? '') }}">
+        @error('postal_code')<div class="error">{{ $message }}</div>@enderror
 
-    <button type="submit">更新する</button>
-</form>
+        <label>住所</label>
+        <input type="text" name="address"
+            value="{{ old('address', $user->profile->address ?? '') }}">
+        @error('address')<div class="error">{{ $message }}</div>@enderror
+
+        <label>建物名</label>
+        <input type="text" name="building"
+            value="{{ old('building', $user->profile->building ?? '') }}">
+
+        <button type="submit">更新する</button>
+    </form>
+
+</div>
 
 @endsection

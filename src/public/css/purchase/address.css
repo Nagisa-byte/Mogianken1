@@ -1,0 +1,70 @@
+/* 全体レイアウト */
+.purchase-address-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* タイトル */
+.purchase-address-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* フォーム全体 */
+.purchase-address-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ラベル */
+.purchase-address-container label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* 入力欄 */
+.purchase-address-container input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* エラーメッセージ */
+.purchase-address-container .error {
+    color: red;
+    font-size: 12px;
+}
+
+/* 保存ボタン */
+.purchase-address-container button {
+    background-color: #e60000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.purchase-address-container button:hover {
+    background-color: #cc0000;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    .purchase-address-container {
+        width: 95%;
+        padding: 15px;
+    }
+}
