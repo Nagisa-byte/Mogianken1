@@ -1,31 +1,38 @@
 # フリマアプリ
 
 ## 環境構築
-### Dockerビルド
-・git clone https://github.com/Nagisa-byte/Mogianken1.git
-・docker-compose up -d --build
 
-### Laravel環境構築
-・docker-compose exec php bash
-・composer install
-・cp .env.example .env、環境変数を変更
-・php artisan key:generate
-・php artisan migrate
-・php artisan db:seed
+### Docker ビルド
+
+- git clone https://github.com/Nagisa-byte/Mogianken1.git
+- docker-compose up -d --build
+
+### Laravel 環境構築
+
+- docker-compose exec php bash
+- composer install
+- cp .env.example .env、環境変数を変更
+- php artisan key:generate
+- php artisan migrate
+- php artisan db:seed
 
 ## 開発環境
-・お問い合わせ画面：http://localhost
-・ユーザー登録：http://localhost/register
-・phpMyAdmin：http://localhost:8080/
+
+- お問い合わせ画面：http://localhost
+- ユーザー登録：http://localhost/register
+- phpMyAdmin：http://localhost:8080/
 
 ## 使用技術（実行環境）
-・PHP8.1.33
-・Laravel 8.83.29
-・MySQL8.0.26
-・nginx1.21.1
 
-## ER図
+- PHP8.1.33
+- Laravel 8.83.29
+- MySQL8.0.26
+- nginx1.21.1
+
+## ER 図
+
 ![ER図](docs/er_diagram.jpg)
 
 ## URL
+
 開発環境：http://localhost/
