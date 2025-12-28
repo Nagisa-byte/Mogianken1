@@ -109,3 +109,18 @@
     color: #777;
     font-size: 14px;
 }
+
+
+/* タブレット */
+@media screen and (max-width: 1024px) {
+    .item-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* スマホ */
+@media screen and (max-width: 768px) {
+    .item-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

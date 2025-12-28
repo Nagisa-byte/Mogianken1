@@ -27,22 +27,20 @@
     <div class="tab-border"></div>
 
     {{-- 商品一覧（必ず6つ表示） --}}
-    <div class="item-list">
 
+
+    {{-- 実データを表示 --}}
+    <div class="item-list">
         @php
         $displayItems = $items->take(6); // 実データ最大6つ
         $missing = 6 - $displayItems->count();
         @endphp
-
-        {{-- 実データを表示 --}}
-        @foreach ($displayItems as $item)
+        @foreach ($items as $item)
         <div class="item-card">
-            <a href="{{ $item->id ? '/item/'.$item->id : '#' }}">
-                <img src="{{ $item->image_path ?? '/noimage.png' }}" alt="商品画像">
-                <p class="item-title">{{ $item->title ?? '商品名' }}</p>
-                <p class="item-price">
-                    {{ $item->price ? '¥'.number_format($item->price) : '' }}
-                </p>
+            <a href="/item/{{ $item->id }}">
+                <img src="{{ $item->image_path ?? '/noimage.png' }}">
+                <p class="item-title">{{ $item->title }}</p>
+                <p class="item-price">¥{{ number_format($item->price) }}</p>
             </a>
         </div>
         @endforeach
@@ -55,7 +53,7 @@
     </div>
     @endfor
 
-</div>
+
 
 </div>
 @endsection

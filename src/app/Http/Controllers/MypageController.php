@@ -11,36 +11,23 @@ class MypageController extends Controller
 {
     public function index(Request $request)
     {
-        return $this->soldList($request);
-    }
-
-    /* 出品した商品 */
-    public function soldList(Request $request)
-    {
         $user = Auth::user();
+        $page = $request->query('page', 'sell'); // デフォルトは sell
 
-        $items = Item::where('user_id', $user->id)->get();
+        if ($page === 'buy') {
+            // 購入した商品
+            $items = Item::whereIn('id', function ($query) use ($user) {
+                $query->select('item_id')
+                    ->from('purchases')
+                    ->where('user_id', $user->id);
+            })->latest()->get();
+        } else {
+            // 出品した商品
+            $items = Item::where('user_id', $user->id)
+                ->latest()
+                ->get();
+        }
 
-        return view('mypage.index', [
-            'user' => $user,
-            'items' => $items
-        ]);
-    }
-
-    /* 購入した商品 */
-    public function purchasedList(Request $request)
-    {
-        $user = Auth::user();
-
-        // purchases → item を参照
-        $items = Item::whereIn(
-            'id',
-            Purchase::where('user_id', $user->id)->pluck('item_id')
-        )->get();
-
-        return view('mypage.index', [
-            'user' => $user,
-            'items' => $items
-        ]);
+        return view('mypage.index', compact('user', 'items'));
     }
 }
